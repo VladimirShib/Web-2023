@@ -18,7 +18,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 250px;
+    max-width: 940px;
+    margin: 0 auto;
     padding-top: 20px;
 }
 
@@ -31,8 +32,9 @@
 .menu__items_solid
 {
     display: flex;
-    flex-basis: 376px;
     justify-content: space-around;
+    max-width: 376px;
+    width: 100%;
     font: 12px Oxygen;
     letter-spacing: 0.6px;
     text-transform: uppercase;
@@ -61,27 +63,24 @@
 {
     font: 50px/1 Lora;
     letter-spacing: 2px;
-    margin: 0 0;
     color: #FFFFFF;
 }
 
 .heading__subtitle
 {
-    font: 17px/1.18  Oxygen;
+    font: 17px/20px Oxygen;
     margin: 20px 0 31px;
-    color: rgb(255, 255, 255, 0.63);
+    color: #FFFFFFA1;
 }
 
 .heading__button
 {
     display: block;
-    font: 13px Oxygen;
-    line-height: 44px;
+    font: 13px/44px Oxygen;
     color: #FFFFFF;
     text-decoration: none;
     width: 167px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     background-color: #DD783F;
     border-radius: 3px;
 }
@@ -108,10 +107,9 @@
     display: flex;
     flex-basis: 139px;
     justify-content: center;
-    font: 14px/1.43 Lora;
+    font: 14px/20px Lora;
     color: #768088;
     text-decoration: none;
-    margin: 0;
 }
 
 .subjects__item:hover
@@ -142,10 +140,9 @@
     position: relative;
     width: 100%;
     text-align: center;
-    font: 20px Oxygen;
+    font: 20px/27px Oxygen;
     letter-spacing: 2px;
     color: #2E2E2E;
-    margin: 0 auto;
     padding-bottom: 16px;
 }
 
@@ -161,40 +158,49 @@
     background-color: #DEDEDE;
 }
 
-.main-middle-block__featured-post
+.main-middle-block__featured-post-one
 {
     background-image: url(../images/the_road_ahead.jpg);
     background-repeat: no-repeat;
-    background-size: cover;  
-    width: 460px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-width: 460px;
+    width: 100%;
+    min-height: 280px;
     border-radius: 3px;
+    padding: 0 20px;
 }
 
-.featured-post__image
+.main-middle-block__featured-post-two
 {
-    position: absolute;
-    width: 460px;
-    height: 280px;
-    left: 0;
-    top: 0;
-    z-index: -1;
+    background-image: url(../images/from_top_down.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-width: 460px;
+    width: 100%;
+    min-height: 280px;
+    border-radius: 3px;
+    padding: 0 20px;
 }
 
 .featured-post__title_light
 {
-    font: 27px/1.11 Lora;
+    font: 27px/30px Lora;
     color: #FFFFFF;
     text-decoration: none;
-    margin: 6px 20px;
-    z-index: 1;
+    margin-top: auto;
 }
 
 .featured-post__subtitle_light
 {
-    font: 14px/1.79 Oxygen;
-    color:rgba(255, 255, 255, 0.7);
-    margin: 0 20px;
-    z-index: 1;
+    font: 14px/25px Oxygen;
+    color:#FFFFFFB2;
+    margin: 6px 0 12px;
 }
 
 .featured-post__author-info_light
@@ -202,38 +208,36 @@
     display: flex;
     align-items: center;
     width: auto;
-    height: 35px;
-    margin: 12px 20px 15px;
-    z-index: 1;
+    margin-bottom: 15px;
+    padding: 5px 0 4px;
 }
 
 .featured-post__author-name_light
 {
-    font: 11px Oxygen;
+    font: 12px Oxygen;
     text-decoration: none;
     color:#FFFFFFB2;
-    margin: 0 auto 0 10px;
+    margin: 0 10px;
 }
 
 .featured-post__date_light
 {
     font: 12px Oxygen;
     color:#FFFFFFB2;
-    margin: 0 0 0 auto;
+    min-width: fit-content;
+    margin-left: auto;
 }
 
 .featured-post__label
 {
     text-align: center;
-    font: 12px Oxygen;
+    font: 12px/26px Oxygen;
     text-transform: uppercase;
-    line-height: 26px;
     color: #FFFFFF;
     width: 87px;
     background-color: #DD783F;
     border-radius: 2px;
-    margin: 20px auto auto 20px;
-    z-index: 1;
+    margin-top: 20px;
 }
 
 .main-middle-block__recent-posts
@@ -251,29 +255,29 @@
 {
     display: flex;
     flex-direction: column;
-    width: 296px;
-    height: 291px;
+    max-width: 296px;
+    min-height: 291px;
     border-radius: 3px;
     background-color: #FFFFFF;
 }
 
 .recent-post__image
 {
-    width: 296px;
-    height: 150px;
+    max-width: 296px;
+    max-height: 150px;
 }
 
 .recent-post__title_dark
 {
-    font: 16px/1.31 Lora;
+    font: 16px/21px Lora;
     text-decoration: none;
     color: #101315;
-    margin: 14px auto 6px 13px;
+    margin: 14px 13px 6px;
 }
 
 .recent-post__subtitle_dark
 {
-    font: 13px/1.46 Oxygen;
+    font: 13px/19px Oxygen;
     color: #7A7A7A;
     margin: 0 13px auto;
 }
@@ -283,13 +287,16 @@
     display: flex;
     align-items: center;
     width: auto;
-    height: 48px;
+    padding: 12px 13px 10px;
     border-top: 1px solid #EFEFEF;
+    margin-top: 13px;
 }
 
 .recent-post__author-pic
 {
-    margin-left: 13px;
+    max-width: 26px;
+    max-height: 26px;
+    border-radius: 60px;
 }
 
 .recent-post__author-name_dark
@@ -297,19 +304,19 @@
     font: 11px Oxygen;
     text-decoration: none;
     color: #999999;
-    margin: 0 auto 0 10px;
+    margin: 0 10px;
 }
 
 .recent-post__date_dark
 {
     font: 12px Oxygen;
     color:#999999;
-    margin: 0 13px 0 auto;
+    min-width: fit-content;
+    margin-left: auto;
 }
 
 .bottom-block
 {
-    height: 378px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -321,14 +328,12 @@
 .bottom-block__divider_light
 {
     position: relative;
-    /* width: 188px; */
     width: 100%;
-    height: 47px;
     text-align: center;
-    font: 25px Oxygen;
+    font: 25px/30px Oxygen;
     color: #EFEFEF;
-    margin: 0 auto 20px;
-    /* border-bottom: 1px solid #DEDEDE; */
+    margin: 81px auto 20px;
+    padding-bottom: 17px;
 }
 
 .bottom-block__divider_light::after
@@ -346,7 +351,8 @@
 .bottom-block__form
 {
     display: flex;
-    width: 500px;
+    max-width: 500px;
+    width: 100%;
     height: 50px;
     margin: 0 auto;
 }
@@ -382,23 +388,30 @@ input:focus::-webkit-input-placeholder
     cursor: pointer;
 }
 
+.bottom-block__footer
+{
+    background-color: #232F3899;
+    border-top: 1px solid #FFFFFF1F;
+    margin-top: 90px;
+    padding: 31px 0 32px;
+}
+
 .bottom-block__menu
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 89px;
-    margin: 90px 0 0;
-    padding: 0 250px;
-    background-color: #232F3899;
-    border-top: 1px solid #FFFFFF1F;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 10px;
 }
 
 .menu__items_transparent
 {
     display: flex;
-    flex-basis: 272px;
     justify-content: space-between;
+    max-width: 272px;
+    width: 100%;
     font: 11px Oxygen;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -418,7 +431,6 @@ input:focus::-webkit-input-placeholder
 
 .article-top-block
 {
-    height: 360px;
     background-color: #FFFFFF;
 }
 
@@ -446,21 +458,21 @@ input:focus::-webkit-input-placeholder
     letter-spacing: 2px;
     text-align: center;
     color: #2E2E2E;
-    margin-top: 82px;
+    margin-top: 104px;
 }
 
 .article-top-block__subtitle
 {
-    font: 17px/1.67 Oxygen;
+    font: 17px/20px Oxygen;
     text-align: center;
     color: #2E2E2EA1;
-    margin-top: 20px;
+    margin: 20px 0 113px;
 }
 
 .filler__image
 {
     background-image: url(../images/the_road_ahead_article.jpg);
-    height: 534px;
+    min-height: 534px;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 3px;
@@ -469,12 +481,13 @@ input:focus::-webkit-input-placeholder
 .article-middle-block
 {
     background-color: #F7F7F7;
-    padding: 140px 240px 135px;
+    padding: 140px 0 135px;
 }
 
 .article-middle-block__paragraph
 {
-    font: 24px/1.46 Oxygen;
+    font: 24px/35px Oxygen;
     color: #101315;
-    margin-bottom: 35px;
+    max-width: 960px;
+    margin: 0 auto 35px;
 }
