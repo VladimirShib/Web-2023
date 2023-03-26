@@ -8,7 +8,7 @@
 
 .main-top-block
 {
-    background-image: url(../images/top_block_bg.jpg);
+    background-image: url(../img/top_block_bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;    
 }
@@ -160,7 +160,7 @@
 
 .main-middle-block__featured-post-one
 {
-    background-image: url(../images/the_road_ahead.jpg);
+    background-image: url(../img/the_road_ahead.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -175,7 +175,7 @@
 
 .main-middle-block__featured-post-two
 {
-    background-image: url(../images/from_top_down.jpg);
+    background-image: url(../img/from_top_down.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -320,7 +320,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background-image: url(../images/footer.jpg);
+    background-image: url(../img/footer.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -471,7 +471,7 @@ input:focus::-webkit-input-placeholder
 
 .filler__image
 {
-    background-image: url(../images/the_road_ahead_article.jpg);
+    background-image: url(../img/the_road_ahead_article.jpg);
     min-height: 534px;
     background-repeat: no-repeat;
     background-size: cover;
