@@ -6,28 +6,36 @@ import (
 	"net/http"
 )
 
-type featuredPostsData struct {
-	Title       string
-	Subtitle    string
-	ImgModifier string
-	Author      string
-	AuthorImg   string
-	PublishDate string
+type postsData struct {
+	PostTitle       string
+	PostSubtitle    string
+	PostImgModifier string
+	PostAuthor      string
+	PostAuthorImg   string
+	PostPublishDate string
 }
 
 type indexPageData struct {
-	featuredPosts []featuredPostsData
+	FeaturedPosts []postsData
 }
 
-func featuredPosts() []featuredPostsData {
-	return []featuredPostsData{
+func featuredPosts() []postsData {
+	return []postsData{
 		{
-			Title:       "The Road Ahead",
-			Subtitle:    "The road ahead might be paved - it might not be.",
-			ImgModifier: "main-middle-block__featured-post-one",
-			Author:      "Mat Vogels",
-			AuthorImg:   "../static/img/mat_vogels.jpg",
-			PublishDate: "September 25, 2015",
+			PostTitle:       "The Road Ahead",
+			PostSubtitle:    "The road ahead might be paved - it might not be.",
+			PostImgModifier: "main-middle-block__featured-post-one",
+			PostAuthor:      "Mat Vogels",
+			PostAuthorImg:   "../static/img/mat_vogels.jpg",
+			PostPublishDate: "September 25, 2015",
+		},
+		{
+			PostTitle:       "From Top Down",
+			PostSubtitle:    "Once a year, go someplace you've never been before.",
+			PostImgModifier: "main-middle-block__featured-post-two",
+			PostAuthor:      "William Wong",
+			PostAuthorImg:   "../static/img/william_wong.jpg",
+			PostPublishDate: "September 25, 2015",
 		},
 	}
 }
@@ -41,8 +49,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := indexPageData{
-		featuredPosts: featuredPosts(),
-		// recentPosts:   getRecentPosts(),
+		FeaturedPosts: featuredPosts(),
 	}
 
 	err = ts.Execute(w, data)
