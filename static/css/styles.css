@@ -438,7 +438,7 @@ input:focus::-webkit-input-placeholder
 
 .menu__logotype_dark
 {
-    font: 26px Lora;
+    font: 26px/1 Lora;
     color: #2E2E2E;
 }
 

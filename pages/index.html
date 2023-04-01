@@ -12,7 +12,7 @@
       <header class="main-top-block__menu menu">
         <span class="menu__logotype_light">Escape.</span>
         <nav class="menu__items_solid">
-          <a title="HOME" href="#" class="menu__item_light">HOME</a>
+          <a title="HOME" href="/home" class="menu__item_light">HOME</a>
           <a title="CATEGORIES" href="#" class="menu__item_light">CATEGORIES</a>
           <a title="ABOUT" href="#" class="menu__item_light">ABOUT</a>
           <a title="CONTACT" href="#" class="menu__item_light">CONTACT</a>
@@ -35,88 +35,32 @@
     <div class="main-middle-block">
       <div class="main-middle-block__featured-posts">
         <h2 class="main-middle-block__divider_dark">Featured Posts</h2>
-        <div class="main-middle-block__featured-post-one featured-post">
-          <a title="The Road Ahead" href="#" class="featured-post__title_light">The Road Ahead</a>
-          <p class="featured-post__subtitle_light">The road ahead might be paved - it might not be.</p>
+        {{ range .FeaturedPosts }}
+        <div class="{{ .ImgModifier }} featured-post">
+          <a title="{{ .Title }}" href="{{ .Link }}" class="featured-post__title_light">{{ .Title }}</a>
+          <p class="featured-post__subtitle_light">{{ .Subtitle }}</p>
           <div class="featured-post__author-info_light">
-            <img src="../static/img/mat_vogels.jpg" alt="Mat Vogels">
-            <a title="Mat Vogels" href="#" class="featured-post__author-name_light">Mat Vogels</a>
-            <span class="featured-post__date_light">September 25, 2015</span>
+            <img src="{{ .AuthorImg }}" alt="{{ .Author }}">
+            <a title="{{ .Author }}" href="#" class="featured-post__author-name_light">{{ .Author }}</a>
+            <span class="featured-post__date_light">{{ .PublishDate }}</span>
           </div>
         </div>
-        <div class="main-middle-block__featured-post-two featured-post">
-          <span class="featured-post__label">ADVENTURE</span>
-          <a title="From Top Down" href="#" class="featured-post__title_light">From Top Down</a>
-          <p class="featured-post__subtitle_light">Once a year, go someplace you've never been before.</p>
-          <div class="featured-post__author-info_light">
-            <img src="../static/img/william_wong.jpg" alt="William Wong">
-            <a title="William Wong" href="#" class="featured-post__author-name_light">William Wong</a>
-            <span class="featured-post__date_light">September 25, 2015</span>
-          </div>
-        </div>
+        {{ end }}
       </div>
       <div class="main-middle-block__recent-posts">
         <h2 class="main-middle-block__divider_dark">Most Recent</h2>
+        {{ range .RecentPosts }}
         <div class="main-middle-block__recent-post recent-post">
-          <img src="../static/img/still_standing_tall.jpg" alt="Still Standing Tall" class="recent-post__image">
-          <a title="Still Standing Tall" href="#" class="recent-post__title_dark">Still Standing Tall</a>
-          <p class="recent-post__subtitle_dark">Life begins at the end of your comfort zone.</p>
+          <img src="{{ .ImgModifier }}" alt="{{ .Title }}" class="recent-post__image">
+          <a title="{{ .Title }}" href="{{ .Link }}" class="recent-post__title_dark">{{ .Title }}</a>
+          <p class="recent-post__subtitle_dark">{{ .Subtitle }}</p>
           <div class="recent-post__author-info_dark">
-            <img src="../static/img/william_wong.jpg" alt="William Wong" class="recent-post__author-pic">
-            <a title="William Wong" href="#" class="recent-post__author-name_dark">William Wong</a>
-            <span class="recent-post__date_dark">9/25/2015</span>
+            <img src="{{ .AuthorImg }}" alt="{{ .Author }}" class="recent-post__author-pic">
+            <a title="{{ .Author }}" href="#" class="recent-post__author-name_dark">{{ .Author }}</a>
+            <span class="recent-post__date_dark">{{ .PublishDate }}</span>
           </div>
         </div>
-        <div class="main-middle-block__recent-post recent-post">
-          <img src="../static/img/sunny_side_up.jpg" alt="Sunny Side Up" class="recent-post__image">
-          <a title="Sunny Side Up" href="#" class="recent-post__title_dark">Sunny Side Up</a>
-          <p class="recent-post__subtitle_dark">No place is ever as bad as they tell you it's going to be.</p>
-          <div class="recent-post__author-info_dark">
-            <img src="../static/img/mat_vogels.jpg" alt="Mat Vogels" class="recent-post__author-pic">
-            <a title="Mat Vogels" href="#" class="recent-post__author-name_dark">Mat Vogels</a>
-            <span class="recent-post__date_dark">9/25/2015</span> 
-          </div>
-        </div>
-        <div class="main-middle-block__recent-post recent-post">
-          <img src="../static/img/water_falls.jpg" alt="Water Falls" class="recent-post__image">
-          <a title="Water Falls" href="#" class="recent-post__title_dark">Water Falls</a>
-          <p class="recent-post__subtitle_dark">We travel not to escape life, but for live not to escape us.</p>
-          <div class="recent-post__author-info_dark">
-            <img src="../static/img/mat_vogels.jpg" alt="Mat Vogels" class="recent-post__author-pic">
-            <a title="Mat Vogels" href="#" class="recent-post__author-name_dark">Mat Vogels</a>
-            <span class="recent-post__date_dark">9/25/2015</span> 
-          </div>
-        </div>
-        <div class="main-middle-block__recent-post recent-post">
-          <img src="../static/img/through_the_mist.jpg" alt="Through the Mist" class="recent-post__image">
-          <a title="Through the Mist" href="#" class="recent-post__title_dark">Through the Mist</a>
-          <p class="recent-post__subtitle_dark">Travel makes you see what a tiny place you occupy in the world.</p>
-          <div class="recent-post__author-info_dark">
-            <img src="../static/img/william_wong.jpg" alt="William Wong" class="recent-post__author-pic">
-            <a title="William Wong" href="#" class="recent-post__author-name_dark">William Wong</a>
-            <span class="recent-post__date_dark">9/25/2015</span> 
-          </div>
-        </div>
-        <div class="main-middle-block__recent-post recent-post">
-          <img src="../static/img/awaken_early.jpg" alt="Awaken Early" class="recent-post__image">
-          <a title="Awaken Early" href="#" class="recent-post__title_dark">Awaken Early</a>
-          <p class="recent-post__subtitle_dark">Not all those who wander are lost.</p>
-          <div class="recent-post__author-info_dark">
-            <img src="../static/img/mat_vogels.jpg" alt="Mat Vogels" class="recent-post__author-pic">
-            <a title="Mat Vogels" href="#" class="recent-post__author-name_dark">Mat Vogels</a>
-            <span class="recent-post__date_dark">9/25/2015</span> 
-          </div>
-        </div>
-        <div class="main-middle-block__recent-post recent-post">
-          <img src="../static/img/try_it_always.jpg" alt="Try it Always" class="recent-post__image">
-          <a title="Try it Always" href="#" class="recent-post__title_dark">Try it Always</a>
-          <p class="recent-post__subtitle_dark">The world is a book, and those who do not travel read only one page.</p>
-          <div class="recent-post__author-info_dark">
-            <img src="../static/img/mat_vogels.jpg" alt="Mat Vogels" class="recent-post__author-pic">
-            <a title="Mat Vogels" href="#" class="recent-post__author-name_dark">Mat Vogels</a>
-            <span class="recent-post__date_dark">9/25/2015</span> 
-          </div>
-        </div>
+        {{ end }}
       </div>
     </div>
     <div class="bottom-block">
@@ -129,7 +73,7 @@
         <div class="bottom-block__menu menu">
           <span class="menu__logotype_light">Escape.</span>
           <nav class="menu__items_transparent">
-            <a title="HOME" href="#" class="menu__item_transparent">HOME</a>
+            <a title="HOME" href="/home" class="menu__item_transparent">HOME</a>
             <a title="CATEGORIES" href="#" class="menu__item_transparent">CATEGORIES</a>
             <a title="ABOUT" href="#" class="menu__item_transparent">ABOUT</a>
             <a title="CONTACT" href="#" class="menu__item_transparent">CONTACT</a>
