@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>The Road Ahead</title>
-    <link href="../static/css/styles.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
   </head>
@@ -21,12 +21,11 @@
       <h1 class="article-top-block__title">{{ .Title }}</h1>
       <p class="article-top-block__subtitle">{{ .Subtitle }}</p>
     </div>
-    <div class="{{ .ImgModifier }}" title="{{ .Title }}"></div>
+    <div class="filler__image" title="{{ .Title }}"></div>
     <article class="article-middle-block">
-      <p class="article-middle-block__paragraph">{{ .P1 }}</p>
-      <p class="article-middle-block__paragraph">{{ .P2 }}</p>
-      <p class="article-middle-block__paragraph">{{ .P3 }}</p>
-      <p class="article-middle-block__paragraph">{{ .P4 }}</p>
+      {{ range .Text }}
+      <p class="article-middle-block__paragraph">{{ . }}</p>
+      {{ end }}
     </article>
     <div class="bottom-block">
       <h2 class="bottom-block__divider_light">Stay in Touch</h2>

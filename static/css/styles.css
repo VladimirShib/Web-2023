@@ -8,7 +8,7 @@
 
 .main-top-block
 {
-    background-image: url(../img/top_block_bg.jpg);
+    background-image: url('/static/img/top_block_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;    
 }
@@ -159,11 +159,8 @@
     background-color: #DEDEDE;
 }
 
-.main-middle-block__featured-post-one
+.main-middle-block__featured-post
 {
-    background-image: url(../img/the_road_ahead.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -174,19 +171,18 @@
     padding: 0 20px;
 }
 
-.main-middle-block__featured-post-two
+.featured-post_one
 {
-    background-image: url(../img/from_top_down.jpg);
+    background-image: url('/static/img/the_road_ahead.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    max-width: 460px;
-    width: 100%;
-    min-height: 280px;
-    border-radius: 3px;
-    padding: 0 20px;
+}
+
+.featured-post_two
+{
+    background-image: url('/static/img/from_top_down.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .featured-post__title_light
@@ -322,7 +318,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background-image: url(../img/footer.jpg);
+    background-image: url('/static/img/footer.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -473,7 +469,7 @@ input:focus::-webkit-input-placeholder
 
 .filler__image
 {
-    background-image: url(../img/the_road_ahead_article.jpg);
+    background-image: url('/static/img/the_road_ahead_article.jpg');
     min-height: 534px;
     background-repeat: no-repeat;
     background-size: cover;

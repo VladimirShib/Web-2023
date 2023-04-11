@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Escape</title>
-    <link href="../static/css/styles.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
   </head>
@@ -36,7 +36,7 @@
       <div class="main-middle-block__featured-posts">
         <h2 class="main-middle-block__divider_dark">Featured Posts</h2>
         {{ range .FeaturedPosts }}
-        <div class="{{ .ImgModifier }} featured-post">
+        <div class="main-middle-block__featured-post {{ .ImgModifier }}">
           <a title="{{ .Title }}" href="{{ .Link }}" class="featured-post__title_light">{{ .Title }}</a>
           <p class="featured-post__subtitle_light">{{ .Subtitle }}</p>
           <div class="featured-post__author-info_light">
