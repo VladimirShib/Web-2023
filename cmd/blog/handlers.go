@@ -1,16 +1,20 @@
 package main
 
 import (
+	"database/sql"
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 
+	"github.com/gorilla/mux"
 	"github.com/jmoiron/sqlx"
 )
 
 type postData struct {
-	Link        string `db:"link"`
+	PostID      string `db:"post_id"`
+	PostURL     string
 	Title       string `db:"title"`
 	Subtitle    string `db:"subtitle"`
 	ImgModifier string `db:"img_modifier"`
@@ -20,28 +24,28 @@ type postData struct {
 }
 
 type indexPageData struct {
-	FeaturedPosts []postData
-	RecentPosts   []postData
+	FeaturedPosts []*postData
+	RecentPosts   []*postData
 }
 
 type articlePageData struct {
 	Title       string `db:"title"`
 	Subtitle    string `db:"subtitle"`
 	ImgModifier string `db:"img_modifier"`
-	Text        string `db:"text"`
+	Content     string `db:"content"`
 }
 
 type splitArticlePageData struct {
 	Title       string   `db:"title"`
 	Subtitle    string   `db:"subtitle"`
 	ImgModifier string   `db:"img_modifier"`
-	Text        []string `db:"text"`
+	Content     []string `db:"content"`
 }
 
-func featuredPosts(client *sqlx.DB) ([]postData, error) {
+func featuredPosts(client *sqlx.DB) ([]*postData, error) {
 	const query = `
 		SELECT
-			link,
+			post_id,
 			title,
 			subtitle,
 			img_modifier,
@@ -49,24 +53,28 @@ func featuredPosts(client *sqlx.DB) ([]postData, error) {
 			author_img,
 			publish_date
 		FROM
-			post
+			` + "`post`" + `
 		WHERE featured = 1
 	`
 
-	var posts []postData
+	var posts []*postData
 
 	err := client.Select(&posts, query)
 	if err != nil {
 		return nil, err
 	}
 
+	for _, post := range posts {
+		post.PostURL = "/post/" + post.PostID
+	}
+
 	return posts, nil
 }
 
-func recentPosts(client *sqlx.DB) ([]postData, error) {
+func recentPosts(client *sqlx.DB) ([]*postData, error) {
 	const query = `
 		SELECT
-			link,
+			post_id,
 			title,
 			subtitle,
 			img_modifier,
@@ -74,40 +82,46 @@ func recentPosts(client *sqlx.DB) ([]postData, error) {
 			author_img,
 			publish_date
 		FROM
-			post
+			` + "`post`" + `
 		WHERE featured = 0
 	`
 
-	var posts []postData
+	var posts []*postData
 
 	err := client.Select(&posts, query)
 	if err != nil {
 		return nil, err
 	}
 
+	for _, post := range posts {
+		post.PostURL = "/post/" + post.PostID
+	}
+
 	return posts, nil
 }
 
-func articleData(client *sqlx.DB) (splitArticlePageData, error) {
+func articleData(client *sqlx.DB, postID int) (splitArticlePageData, error) {
 	const query = `
 		SELECT
 			title,
 			subtitle,
 			img_modifier,
-			text
+			content
 		FROM
-			post
+			` + "`post`" + `
+		WHERE
+			post_id = ?
 	`
 
 	var article articlePageData
 
-	err := client.Get(&article, query)
+	err := client.Get(&article, query, postID)
 
 	var splitArticle = splitArticlePageData{
 		Title:       article.Title,
 		Subtitle:    article.Subtitle,
 		ImgModifier: article.ImgModifier,
-		Text:        strings.Split(article.Text, "\n"),
+		Content:     strings.Split(article.Content, "\n"),
 	}
 
 	if err != nil {
@@ -156,14 +170,29 @@ func indexPage(client *sqlx.DB) func(http.ResponseWriter, *http.Request) {
 
 func articlePage(client *sqlx.DB) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		ts, err := template.ParseFiles("pages/post.html")
+		postIDStr := mux.Vars(r)["postID"]
+
+		postID, err := strconv.Atoi(postIDStr)
 		if err != nil {
+			http.Error(w, "Invalid post id", http.StatusForbidden)
+			log.Println(err)
+			return
+		}
+
+		data, err := articleData(client, postID)
+		if err != nil {
+			if err == sql.ErrNoRows {
+				http.Error(w, "Post not found", 404)
+				log.Println(err.Error())
+				return
+			}
+
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err.Error())
 			return
 		}
 
-		data, err := articleData(client)
+		ts, err := template.ParseFiles("pages/post.html")
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err.Error())

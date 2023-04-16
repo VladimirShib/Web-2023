@@ -21,9 +21,9 @@
       <h1 class="article-top-block__title">{{ .Title }}</h1>
       <p class="article-top-block__subtitle">{{ .Subtitle }}</p>
     </div>
-    <div class="filler__image" title="{{ .Title }}"></div>
+    <img src="{{ .ImgModifier }}" alt="{{ .Title }}" class="filler__image">
     <article class="article-middle-block">
-      {{ range .Text }}
+      {{ range .Content }}
       <p class="article-middle-block__paragraph">{{ . }}</p>
       {{ end }}
     </article>
