@@ -37,7 +37,7 @@
         <h2 class="main-middle-block__divider_dark">Featured Posts</h2>
         {{ range .FeaturedPosts }}
         <div class="main-middle-block__featured-post" style="background-image: url('{{ .ImgModifier }}')">
-          <a title="{{ .Title }}" href="{{ .PostURL }}" class="featured-post__title_light">{{ .Title }}</a>
+          <a title="{{ .Title }}" href="/post/{{ .PostID }}" class="featured-post__title_light">{{ .Title }}</a>
           <p class="featured-post__subtitle_light">{{ .Subtitle }}</p>
           <div class="featured-post__author-info_light">
             <img src="{{ .AuthorImg }}" alt="{{ .Author }}">
@@ -52,7 +52,7 @@
         {{ range .RecentPosts }}
         <div class="main-middle-block__recent-post recent-post">
           <img src="{{ .ImgModifier }}" alt="{{ .Title }}" class="recent-post__image">
-          <a title="{{ .Title }}" href="{{ .PostURL }}" class="recent-post__title_dark">{{ .Title }}</a>
+          <a title="{{ .Title }}" href="/post/{{ .PostID }}" class="recent-post__title_dark">{{ .Title }}</a>
           <p class="recent-post__subtitle_dark">{{ .Subtitle }}</p>
           <div class="recent-post__author-info_dark">
             <img src="{{ .AuthorImg }}" alt="{{ .Author }}" class="recent-post__author-pic">

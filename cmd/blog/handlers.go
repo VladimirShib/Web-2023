@@ -14,7 +14,6 @@ import (
 
 type postData struct {
 	PostID      string `db:"post_id"`
-	PostURL     string
 	Title       string `db:"title"`
 	Subtitle    string `db:"subtitle"`
 	ImgModifier string `db:"img_modifier"`
@@ -53,7 +52,7 @@ func featuredPosts(client *sqlx.DB) ([]*postData, error) {
 			author_img,
 			publish_date
 		FROM
-			` + "`post`" + `
+			post
 		WHERE featured = 1
 	`
 
@@ -62,10 +61,6 @@ func featuredPosts(client *sqlx.DB) ([]*postData, error) {
 	err := client.Select(&posts, query)
 	if err != nil {
 		return nil, err
-	}
-
-	for _, post := range posts {
-		post.PostURL = "/post/" + post.PostID
 	}
 
 	return posts, nil
@@ -82,7 +77,7 @@ func recentPosts(client *sqlx.DB) ([]*postData, error) {
 			author_img,
 			publish_date
 		FROM
-			` + "`post`" + `
+			post
 		WHERE featured = 0
 	`
 
@@ -91,10 +86,6 @@ func recentPosts(client *sqlx.DB) ([]*postData, error) {
 	err := client.Select(&posts, query)
 	if err != nil {
 		return nil, err
-	}
-
-	for _, post := range posts {
-		post.PostURL = "/post/" + post.PostID
 	}
 
 	return posts, nil
@@ -108,7 +99,7 @@ func articleData(client *sqlx.DB, postID int) (splitArticlePageData, error) {
 			img_modifier,
 			content
 		FROM
-			` + "`post`" + `
+			post
 		WHERE
 			post_id = ?
 	`
