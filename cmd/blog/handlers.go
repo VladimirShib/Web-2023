@@ -198,3 +198,25 @@ func articlePage(client *sqlx.DB) func(http.ResponseWriter, *http.Request) {
 		}
 	}
 }
+
+func adminPage(w http.ResponseWriter, r *http.Request) {
+	ts, err := template.ParseFiles("pages/admin.html")
+	if err != nil {
+		http.Error(w, "Internal Server Error", 500)
+		log.Println(err.Error())
+		return
+	}
+
+	ts.Execute(w, postData{})
+}
+
+func loginPage(w http.ResponseWriter, r *http.Request) {
+	ts, err := template.ParseFiles("pages/login.html")
+	if err != nil {
+		http.Error(w, "Internal Server Error", 500)
+		log.Println(err.Error())
+		return
+	}
+
+	ts.Execute(w, postData{})
+}

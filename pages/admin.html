@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="admin-page">
+      <header class="admin-page__admin-page-header admin-page-header">
+        <div class="admin-page-header__title-area">
+          <div>
+            <span class="menu__logotype_light">Escape.</span>
+            <span class="admin-page-header__title_small">author</span>
+          </div>
+          <div class="admin-page-header__avatar-and-exit-block">
+            <div class="admin-page-header__profile-pic"></div>
+            <img src="/static/img/white_exit_icon.png" alt="Log Out">
+          </div>
+        </div>
+      </header>
+      <div class="admin-page__admin-new-post admin-new-post">
+        <div class="admin-new-post__title-and-subtitle">
+          <h1 class="admin-new-post__title">New Post</h1>
+          <span class="admin-new-post__subtitle">Fill out the form below and publish your article</span>
+        </div>
+        <input class="admin-new-post__button" type="submit" value="Publish">
+      </div>
+      <div class="admin-page__admin-main-information admin-main-information">
+        <h2 class="admin-main-information__title">Main Information</h2>
+        <div class="admin-main-information__main-block">
+          <div class="admin-main-information__upload-part upload-part">
+            <span class="upload-part__upload-titles">Title</span>
+            <input class="upload-part__data-input" type="text" placeholder="New Post">
+            <span class="upload-part__upload-titles">Short description</span>
+            <input class="upload-part__data-input" type="text" placeholder="Please, enter any description">
+            <span class="upload-part__upload-titles">Author name</span>
+            <input class="upload-part__author-name-input" type="text">
+            <span class="upload-part__upload-titles">Author Photo</span>
+            <div class="upload-part__author-photo">
+              <div class="upload-part__profile-photo"></div>
+              <input class="upload-part__hidden-input" type="file" id="author-photo">
+              <label class="upload-part__upload-author-photo" for="author-photo">Upload</label>
+            </div>
+            <span class="upload-part__upload-titles">Publish Date</span>
+            <input class="upload-part__data-input" type="date">
+            <span class="upload-part__upload-titles">Hero Image</span>
+            <label class="upload-part__upload-photo_big">
+              <input class="upload-part__hidden-input" type="file" accept="image/jpeg, image/png, image/jpg, image/gif">
+              <img src="/static/img/camera.png" alt="Upload">
+              <span class="upload-part__upload">Upload</span>
+            </label>
+            <span class="upload-part__hint">Size up to 10mb. Format: png, jpeg, gif.</span>
+            <span class="upload-part__upload-titles">Hero Image</span>
+            <label class="upload-part__upload-photo_small">
+              <input class="upload-part__hidden-input" type="file">
+              <img src="/static/img/camera.png" alt="Upload">
+              <span class="upload-part__upload">Upload</span>
+            </label>
+            <span class="upload-part__hint">Size up to 5mb. Format: png, jpeg, gif.</span>
+          </div>
+          <div class="admin-main-information__preview-part preview-part">
+            <span class="preview-part__preview-titles">Article preview</span>
+            <div class="preview-part__wrap-for-preview">
+              <div class="article-preview__gradient_right"></div>
+              <div class="article-preview__gradient_bottom"></div>
+              <div class="preview-part__preview article-preview">
+                <div class="article-preview__content">
+                  <div class="article-preview__header">
+                    <div class="article-preview__dots"></div>
+                    <div class="article-preview__dots"></div>
+                    <div class="article-preview__dots"></div>
+                  </div>
+                  <div class="article-preview__title-block">
+                    <span class="article-preview__title">New Post</span>
+                    <span class="article-preview__subtitle">Please, enter any description</span>
+                  </div>
+                  <div class="article-preview__photo"></div>
+                </div>
+              </div>
+            </div>
+            <span class="preview-part__preview-titles">Post card preview</span>
+            <div class="preview-part__wrap-for-preview">
+              <div class="article-preview__gradient_right"></div>
+              <div class="article-preview__gradient_bottom"></div>
+              <div class="preview-part__preview postcard-preview">
+                <div class="postcard-preview__content">
+                  <div class="postcard-preview__photo"></div>
+                  <div class="postcard-preview__title-block">
+                    <span class="postcard-preview__title">New Post</span>
+                    <span class="postcard-preview__subtitle">Please, enter any description</span>
+                  </div>
+                  <div class="postcard-preview__author-data">
+                    <div class="postcard-preview__author-pic"></div>
+                    <span class="postcard-preview__author-name">Enter author name</span>
+                    <span class="postcard-preview__date">4/19/2023</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="admin-page__admin-content admin-content">
+        <h2 class="admin-content__title">Content</h2>
+        <span class="upload-part__upload-titles">Post content (plain text)</span>
+        <textarea class="admin-content__input" placeholder="Type anything you want ..."></textarea>
+      </div>
+    </div>
+  </body>
+  <script src="/static/js/script.js"></script>
+</html>
