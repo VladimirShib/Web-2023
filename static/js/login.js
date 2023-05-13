@@ -1,5 +1,3 @@
-const emailField = document.getElementById('email');
-const passwordField = document.getElementById('password');
 const eyeToggle = document.querySelector('.login-window__password-toggle');
 
 const togglePassword = function() {
@@ -14,6 +12,12 @@ const togglePassword = function() {
     eyeToggle.classList.toggle('hide-password');
 }
 
+eyeToggle.addEventListener('click', togglePassword);
+
+const submitData = document.getElementById('submit');
+const emailField = document.getElementById('email');
+const passwordField = document.getElementById('password');
+
 const login = function() {
     if (!emailField.value || !passwordField.value) {
         console.log("Error");
@@ -25,21 +29,4 @@ const login = function() {
     }
 }
 
-function previewFile() {
-    const preview = document.querySelector("img");
-    const file = document.querySelector("input[type=file]").files[0];
-    const reader = new FileReader();
-  
-    reader.addEventListener(
-      "load",
-      () => {
-        // convert image file to base64 string
-        preview.src = reader.result;
-      },
-      false
-    );
-  
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  }
+submitData.addEventListener('click', login);
