@@ -12,7 +12,9 @@ const datePreview = document.getElementById('date-preview');
 const contentText = document.querySelector('.admin-content__input');
 const imgData = {
     AuthorPhoto: '',
+    AuthorPhotoName: '',
     PostPhoto: '',
+    PostPhotoName: '',
     ArticlePhoto: '',
 };
 
@@ -67,7 +69,7 @@ const removeAuthorPhotoButton = document.getElementById('remove-author-photo');
 const postcardPreviewAuthorPhotoDiv = document.querySelector('.postcard-preview__author-pic');
 const postcardPreviewAuthorPhoto = document.querySelector('.postcard-preview__author-pic-placeholder');
 
-const uploadAuthorPhoto = async function() {
+const uploadAuthorPhoto = function() {
     const file = inputAuthorPhoto.files[0];
     const reader = new FileReader();
 
@@ -82,14 +84,14 @@ const uploadAuthorPhoto = async function() {
             postcardPreviewAuthorPhoto.classList.remove('hidden');
             uploadAuthorPhotoButton.classList.add('hidden');
             newOrRemoveAuthorPhoto.classList.add('flex');
+            imgData.AuthorPhoto = reader.result;
         },
         false
     );
 
     if (file) {
         reader.readAsDataURL(file);
-        await new Promise(resolve => reader.onload = () => resolve());
-        imgData.AuthorPhoto = reader.result;
+        imgData.AuthorPhotoName = file.name;
     }
 }
 
@@ -104,6 +106,7 @@ const removeAuthorPhoto = function() {
     previewAuthorPhotoDiv.classList.remove('hidden');
     postcardPreviewAuthorPhotoDiv.classList.remove('hidden');
     imgData.AuthorPhoto = '';
+    imgData.AuthorPhotoName = '';
 }
 
 inputAuthorPhoto.addEventListener('change', uploadAuthorPhoto);
@@ -119,7 +122,7 @@ const articlePreviewPhotoDiv = document.querySelector('.article-preview__photo')
 const articlePreviewPhoto = document.querySelector('.article-preview__photo-placeholder');
 const removeBigPhotoButton = document.getElementById('remove-big-photo');
 
-const uploadBigPhoto = async function() {
+const uploadBigPhoto = function() {
     const file = inputBigPhoto.files[0];
     const reader = new FileReader();
 
@@ -134,14 +137,13 @@ const uploadBigPhoto = async function() {
             articlePreviewPhotoDiv.classList.add('hidden');
             articlePreviewPhoto.classList.remove('hidden');
             articlePreviewPhoto.src = reader.result;
+            imgData.ArticlePhoto = reader.result;
         },
         false
     );
 
     if (file) {
         reader.readAsDataURL(file);
-        await new Promise(resolve => reader.onload = () => resolve());
-        imgData.ArticlePhoto = reader.result;
     }
 }
 
@@ -186,14 +188,14 @@ const uploadSmallPhoto = async function() {
             postcardPreviewPhotoDiv.classList.add('hidden');
             postcardPreviewPhoto.classList.remove('hidden');
             postcardPreviewPhoto.src = reader.result;
+            imgData.PostPhoto = reader.result;
         },
         false
     );
 
     if (file) {
         reader.readAsDataURL(file);
-        await new Promise(resolve => reader.onload = () => resolve());
-        imgData.PostPhoto = reader.result;
+        imgData.PostPhotoName = file.name;
     }
 }
 
@@ -208,6 +210,7 @@ const removeSmallPhoto = function() {
     previewSmallPhoto.classList.add('hidden');
     previewSmallPhotoDiv.classList.add('flex');
     imgData.PostPhoto = '';
+    imgData.PostPhotoName = '';
 }
 
 inputSmallPhoto.addEventListener('change', uploadSmallPhoto);
@@ -221,16 +224,36 @@ const publishNewPost = function() {
         console.log("Error");
     } else {
         console.log(JSON.stringify({
-            PostTitle: postTitle.value,
-            PostSubtitle: postSubtitle.value,
-            AuthorName: authorName.value,
-            Date: date.value,
-            Content: contentText.value,
-            AuthorPhoto: imgData.AuthorPhoto,
-            PostPhoto: imgData.PostPhoto,
-            ArticlePhoto: imgData.ArticlePhoto,
+            title: postTitle.value,
+            subtitle: postSubtitle.value,
+            author: authorName.value,
+            publishDate: date.value,
+            content: contentText.value,
+            authorImg: imgData.AuthorPhoto,
+            imgModifier: imgData.PostPhoto,
+            articlePhoto: imgData.ArticlePhoto,
         }));
     }
 }
 
-publishButton.addEventListener('click', publishNewPost);
+const createNewPost = async function() {
+    const response = await fetch('post', {
+        method: 'POST',
+        body: JSON.stringify({
+            title: postTitle.value,
+            subtitle: postSubtitle.value,
+            author: authorName.value,
+            publishDate: date.value,
+            content: contentText.value,
+            authorImg: imgData.AuthorPhoto,
+            authorImgName: imgData.AuthorPhotoName,
+            imgModifier: imgData.PostPhoto,
+            imgModifierName: imgData.PostPhotoName,
+            articlePhoto: imgData.ArticlePhoto,
+        })
+    });
+
+    console.log(response.ok);
+}
+
+publishButton.addEventListener('click', createNewPost);

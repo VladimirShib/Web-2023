@@ -26,8 +26,9 @@ func main() {
 	mux := mux.NewRouter()
 	mux.HandleFunc("/home", indexPage(client))
 	mux.HandleFunc("/post/{postID}", articlePage(client))
-	mux.HandleFunc("/login", loginPage)
-	mux.HandleFunc("/admin", adminPage)
+	mux.HandleFunc("/login", loginPage())
+	mux.HandleFunc("/admin", adminPage())
+	mux.HandleFunc("/post", createPost(client)).Methods(http.MethodPost)
 	mux.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
 	log.Println("Starting server")
