@@ -147,23 +147,23 @@ func createPost(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		var req createPostRequest
+		var request createPostRequest
 
-		err = json.Unmarshal(body, &req)
+		err = json.Unmarshal(body, &request)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err.Error())
 			return
 		}
 
-		imgAuthor, err := base64.StdEncoding.DecodeString(strings.Split(req.AuthorImg, "base64,")[1])
+		imgAuthor, err := base64.StdEncoding.DecodeString(strings.Split(request.AuthorImg, "base64,")[1])
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err.Error())
 			return
 		}
 
-		fileAuthor, err := os.Create("static/img/" + req.AuthorImgName)
+		fileAuthor, err := os.Create("static/img/" + request.AuthorImgName)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err.Error())
@@ -177,14 +177,14 @@ func createPost(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		imgPost, err := base64.StdEncoding.DecodeString(strings.Split(req.ImgModifier, "base64,")[1])
+		imgPost, err := base64.StdEncoding.DecodeString(strings.Split(request.ImgModifier, "base64,")[1])
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err.Error())
 			return
 		}
 
-		filePost, err := os.Create("static/img/" + req.ImgModifierName)
+		filePost, err := os.Create("static/img/" + request.ImgModifierName)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err.Error())
@@ -198,7 +198,7 @@ func createPost(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		err = savePost(db, req)
+		err = savePost(db, request)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err.Error())
@@ -209,7 +209,7 @@ func createPost(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func savePost(db *sqlx.DB, req createPostRequest) error {
+func savePost(db *sqlx.DB, request createPostRequest) error {
 	const query = `
 		INSERT INTO
 			post
@@ -236,7 +236,7 @@ func savePost(db *sqlx.DB, req createPostRequest) error {
 		)
 	`
 
-	_, err := db.Exec(query, req.Title, req.Subtitle, "/static/img/"+req.ImgModifierName, req.Author, "/static/img/"+req.AuthorImgName, req.PublishDate, req.Content)
+	_, err := db.Exec(query, request.Title, request.Subtitle, "/static/img/"+request.ImgModifierName, request.Author, "/static/img/"+request.AuthorImgName, request.PublishDate, request.Content)
 	return err
 }
 

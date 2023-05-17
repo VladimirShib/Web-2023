@@ -33,70 +33,70 @@
         <div class="admin-main-information__main-block">
           <div class="admin-main-information__upload-part upload-part">
             <span class="upload-part__upload-titles">Title</span>
-            <input class="upload-part__data-input" type="text" id="post-title" placeholder="New Post">
+            <input class="upload-part__data-input" type="text" id="postTitle" placeholder="New Post">
             <span class="upload-part__upload-titles">Short description</span>
-            <input class="upload-part__data-input" type="text" id="post-subtitle" placeholder="Please, enter any description">
+            <input class="upload-part__data-input" type="text" id="postSubtitle" placeholder="Please, enter any description">
             <span class="upload-part__upload-titles">Author name</span>
-            <input class="upload-part__author-name-input" type="text" id="author-name">
+            <input class="upload-part__author-name-input" type="text" id="authorName">
             <span class="upload-part__upload-titles">Author Photo</span>
             <div class="upload-part__author-photo">
-              <div class="upload-part__profile-photo"></div>
-              <img class="upload-part__profile-photo-placeholder hidden">
-              <input class="upload-part__hidden-input" type="file" id="author-photo" accept=".jpg, .jpeg, .png, .gif">
-              <label class="upload-part__upload-photo" for="author-photo" id="upload-author-photo">Upload</label>
-              <div class="hidden" id="new-remove-author-photo">
-                <div class="upload-part__upload-new-photo">
+              <div class="upload-part__profile-photo" id="profilePhoto"></div>
+              <img class="upload-part__profile-photo-placeholder hidden" id="profilePhotoPlaceholder">
+              <input class="upload-part__hidden-input" type="file" id="authorPhoto" accept=".jpg, .jpeg, .png, .gif">
+              <label class="upload-part__upload-photo" for="author-photo" id="uploadAuthorPhoto">Upload</label>
+              <div class="hidden" id="newRemoveAuthorPhoto">
+                <div class="upload-part__upload-new-photo" id="uploadAuthorPhoto">
                   <img class="upload-part__icon" src="/static/img/camera.png" alt="Camera">
-                  <label class="upload-part__upload-photo" for="author-photo" id="upload-author-photo">Upload New</label>
+                  <label class="upload-part__upload-photo" for="author-photo">Upload New</label>
                 </div>
-                <div class="upload-part__upload-new-photo">
+                <div class="upload-part__upload-new-photo" id="removeAuthorPhoto">
                   <img class="upload-part__icon" src="/static/img/trash-2.png" alt="Trash Bin">
-                  <span class="upload-part__remove-photo" id="remove-author-photo">Remove</span>
+                  <span class="upload-part__remove-photo">Remove</span>
                 </div>
               </div>
             </div>
             <span class="upload-part__upload-titles">Publish Date</span>
             <input class="upload-part__data-input" type="date" id="date">
             <span class="upload-part__upload-titles">Hero Image</span>
-            <label class="upload-part__upload-photo_big flex hidden">
-              <input class="upload-part__hidden-input" type="file" id="big-photo" accept=".jpg, .jpeg, .png, .gif">
+            <label class="upload-part__upload-photo_big flex hidden" id="uploadPhotoBig">
+              <input class="upload-part__hidden-input" type="file" id="bigPhoto" accept=".jpg, .jpeg, .png, .gif">
               <img src="/static/img/camera.png" alt="Upload">
               <span class="upload-part__upload">Upload</span>
             </label>
             <label for="big-photo">
-              <img class="upload-part__upload-photo_big-placeholder hidden">
+              <img class="upload-part__upload-photo_big-placeholder hidden" id="uploadPhotoBigPlaceholder">
             </label>
-            <div class="hidden" id="new-remove-big-photo">
+            <div class="hidden" id="newRemoveBigPhoto">
               <div class="upload-part__upload-new-photo">
                 <img class="upload-part__icon" src="/static/img/camera.png" alt="Camera">
                 <label class="upload-part__upload-photo" for="big-photo" id="big-photo">Upload New</label>
               </div>
               <div class="upload-part__upload-new-photo">
                 <img class="upload-part__icon" src="/static/img/trash-2.png" alt="Trash Bin">
-                <span class="upload-part__remove-photo" id="remove-big-photo">Remove</span>
+                <span class="upload-part__remove-photo" id="removeBigPhoto">Remove</span>
               </div>
             </div>
-            <span class="upload-part__hint" id="big-photo-hint">Size up to 10mb. Format: png, jpeg, gif.</span>
+            <span class="upload-part__hint" id="bigPhotoHint">Size up to 10mb. Format: png, jpeg, gif.</span>
             <span class="upload-part__upload-titles">Hero Image</span>
-            <label class="upload-part__upload-photo_small flex hidden">
-              <input class="upload-part__hidden-input" type="file" id="small-photo" accept=".jpg, .jpeg, .png, .gif">
+            <label class="upload-part__upload-photo_small flex hidden" id="uploadPhotoSmall">
+              <input class="upload-part__hidden-input" type="file" id="smallPhoto" accept=".jpg, .jpeg, .png, .gif">
               <img src="/static/img/camera.png" alt="Upload">
               <span class="upload-part__upload">Upload</span>
             </label>
             <label for="small-photo">
-              <img class="upload-part__upload-photo_small-placeholder hidden">
+              <img class="upload-part__upload-photo_small-placeholder hidden" id="uploadPhotoSmallPlaceholder">
             </label>
-            <div class="hidden" id="new-remove-small-photo">
+            <div class="hidden" id="newRemoveSmallPhoto">
               <div class="upload-part__upload-new-photo">
                 <img class="upload-part__icon" src="/static/img/camera.png" alt="Camera">
                 <label class="upload-part__upload-photo" for="small-photo" id="small-photo">Upload New</label>
               </div>
               <div class="upload-part__upload-new-photo">
                 <img class="upload-part__icon" src="/static/img/trash-2.png" alt="Trash Bin">
-                <span class="upload-part__remove-photo" id="remove-small-photo">Remove</span>
+                <span class="upload-part__remove-photo" id="removeSmallPhoto">Remove</span>
               </div>
             </div>
-            <span class="upload-part__hint" id="small-photo-hint">Size up to 5mb. Format: png, jpeg, gif.</span>
+            <span class="upload-part__hint" id="smallPhotoHint">Size up to 5mb. Format: png, jpeg, gif.</span>
           </div>
           <div class="admin-main-information__preview-part preview-part">
             <span class="preview-part__preview-titles">Article preview</span>
@@ -111,11 +111,11 @@
                     <div class="article-preview__dots"></div>
                   </div>
                   <div class="article-preview__title-block">
-                    <span class="article-preview__title" id="article-title">New Post</span>
-                    <span class="article-preview__subtitle" id="article-subtitle">Please, enter any description</span>
+                    <span class="article-preview__title" id="articleTitle">New Post</span>
+                    <span class="article-preview__subtitle" id="articleSubtitle">Please, enter any description</span>
                   </div>
-                  <div class="article-preview__photo"></div>
-                  <img class="article-preview__photo-placeholder hidden">
+                  <div class="article-preview__photo" id="articlePhoto"></div>
+                  <img class="article-preview__photo-placeholder hidden" id="articlePhotoPlaceholder">
                 </div>
               </div>
             </div>
@@ -125,17 +125,17 @@
               <div class="article-preview__gradient_bottom"></div>
               <div class="preview-part__preview postcard-preview">
                 <div class="postcard-preview__content">
-                  <div class="postcard-preview__photo"></div>
-                  <img class="postcard-preview__photo-placeholder hidden">
+                  <div class="postcard-preview__photo" id="postcardPhoto"></div>
+                  <img class="postcard-preview__photo-placeholder hidden" id="postcardPhotoPlaceholder">
                   <div class="postcard-preview__title-block">
-                    <span class="postcard-preview__title" id="postcard-title">New Post</span>
-                    <span class="postcard-preview__subtitle" id="postcard-subtitle">Please, enter any description</span>
+                    <span class="postcard-preview__title" id="postcardTitle">New Post</span>
+                    <span class="postcard-preview__subtitle" id="postcardSubtitle">Please, enter any description</span>
                   </div>
                   <div class="postcard-preview__author-data">
-                    <div class="postcard-preview__author-pic"></div>
-                    <img class="postcard-preview__author-pic-placeholder hidden">
-                    <span class="postcard-preview__author-name" id="postcard-author-name">Enter author name</span>
-                    <span class="postcard-preview__date" id="date-preview">yyyy-mm-dd</span>
+                    <div class="postcard-preview__author-pic" id="authorPic"></div>
+                    <img class="postcard-preview__author-pic-placeholder hidden" id="authorPicPlaceholder">
+                    <span class="postcard-preview__author-name" id="postcardAuthorName">Enter author name</span>
+                    <span class="postcard-preview__date" id="datePreview">yyyy-mm-dd</span>
                   </div>
                 </div>
               </div>
@@ -146,7 +146,7 @@
       <div class="admin-page__admin-content admin-content">
         <h2 class="admin-content__title">Content</h2>
         <span class="upload-part__upload-titles">Post content (plain text)</span>
-        <textarea class="admin-content__input" placeholder="Type anything you want ..."></textarea>
+        <textarea class="admin-content__input" id="contentText" placeholder="Type anything you want ..."></textarea>
       </div>
     </div>
   </body>

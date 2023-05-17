@@ -876,7 +876,6 @@
 {
     font: 16px/24px Oxygen;
     color: #E86961;
-    cursor: pointer;
 }
 
 .upload-part__upload-new-photo
@@ -884,6 +883,7 @@
     display: flex;
     align-items: center;
     margin-right: 16px;
+    cursor: pointer;
 }
 
 .upload-part__icon
