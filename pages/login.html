@@ -20,13 +20,23 @@
           </div>
           <div class="admin-login-page__login-window login-window">
             <span class="login-window__title">Log In</span>
+            <div class="login-window__error" id="errorEmpty">
+              <img src="/static/img/alert-circle.png" alt="alert-circle">
+              <span class="login-window__error-message">A-Ah! Check all fields.</span>
+            </div>
+            <div class="login-window__error" id="errorIncorrect">
+              <img src="/static/img/alert-circle.png" alt="alert-circle">
+              <span class="login-window__error-message">Email or password is incorrect.</span>
+            </div>
             <span class="login-window__form-names">Email</span>
             <input class="login-window__email-input" type="text" id="email">
+            <span class="login-window__empty-field-error hidden" id="emailRequired">Email is required.</span>
             <span class="login-window__form-names">Password</span>
             <div class="login-window__password-input">
               <input class="login-window__password-field" type="password" id="password">
-              <div class="login-window__password-toggle hide-password"></div>
+              <div class="login-window__password-toggle hide-password" id="eye"></div>
             </div>
+            <span class="login-window__empty-field-error hidden" id="passwordRequired">Password is required.</span>
             <input class="login-window__login-button" type="submit" value="Log In" id="submit">
           </div>
         </div>

@@ -26,6 +26,9 @@ const showTitlePreview = function () {
         articleTitle.innerHTML = 'New Post';
         postcardTitle.innerHTML = 'New Post';
   	}
+
+    postTitle.classList.remove('red-error-underline');
+    titleRequired.classList.add('hidden');
 }
 
 const showSubtitlePreview = function() {
@@ -36,6 +39,9 @@ const showSubtitlePreview = function() {
         articleSubitle.innerHTML = 'Please, enter any description';
         postcardSubitle.innerHTML = 'Please, enter any description';
     }
+
+    postSubtitle.classList.remove('red-error-underline');
+    subtitleRequired.classList.add('hidden');
 }
 
 const showAuthorNamePreview = function() {
@@ -44,6 +50,9 @@ const showAuthorNamePreview = function() {
     } else {
         postcardAuthorName.innerHTML = 'Enter author name';
     }
+
+    authorName.classList.remove('red-error-underline');
+    authorNameRequired.classList.add('hidden');
 }
 
 const showDatePreview = function() {
@@ -52,6 +61,14 @@ const showDatePreview = function() {
     } else {
         datePreview.innerHTML = 'yyyy-mm-dd';
     }
+
+    date.classList.remove('red-error-underline');
+    dateRequired.classList.add('hidden');
+}
+
+const contentInput = function() {
+    contentText.classList.remove('red-error-underline');
+    textRequired.classList.add('hidden');
 }
 
 const textFunctions = function() {
@@ -59,6 +76,7 @@ const textFunctions = function() {
     postSubtitle.addEventListener('input', showSubtitlePreview);
     authorName.addEventListener('input', showAuthorNamePreview);
     date.addEventListener('input', showDatePreview);
+    contentText.addEventListener('input', contentInput);
 }
 
 textFunctions();
@@ -89,6 +107,7 @@ const uploadAuthorPhoto = function() {
             uploadAuthorPhotoButton.classList.add('hidden');
             newOrRemoveAuthorPhoto.classList.add('flex');
             imgData.AuthorPhoto = reader.result;
+            authorPhotoRequired.classList.add('hidden');
         },
         false
     );
@@ -146,6 +165,7 @@ const uploadBigPhoto = function() {
             articlePreviewPhoto.classList.remove('hidden');
             articlePreviewPhoto.src = reader.result;
             imgData.ArticlePhoto = reader.result;
+            bigPhotoRequired.classList.add('hidden');
         },
         false
     );
@@ -201,6 +221,7 @@ const uploadSmallPhoto = async function() {
             postcardPreviewPhoto.classList.remove('hidden');
             postcardPreviewPhoto.src = reader.result;
             imgData.PostPhoto = reader.result;
+            smallPhotoRequired.classList.add('hidden');
         },
         false
     );
@@ -233,43 +254,71 @@ const smallPhotoFunctions = function() {
 smallPhotoFunctions();
 
 //publish new post
+const publishError = document.getElementById('adminPublishError');
 const publishButton = document.getElementById('publish');
+const publishOk = document.getElementById('adminPublishOk');
+const titleRequired = document.getElementById('titleRequired');
+const subtitleRequired = document.getElementById('subtitleRequired');
+const authorNameRequired = document.getElementById('authorNameRequired');
+const authorPhotoRequired = document.getElementById('authorPhotoRequired');
+const dateRequired = document.getElementById('dateRequired');
+const bigPhotoRequired = document.getElementById('bigPhotoRequired');
+const smallPhotoRequired = document.getElementById('smallPhotoRequired');
+const textRequired = document.getElementById('textRequired');
 
-const publishNewPost = function() {
-    if (!postTitle.value || !postSubtitle.value || !authorName.value) {
-        console.log('Error');
+const publishNewPost = async function() {
+    if (!postTitle.value || !postSubtitle.value || !authorName.value || !inputAuthorPhoto.value || !date.value || !inputBigPhoto.value || !inputSmallPhoto.value || !contentText.value) {
+        publishError.classList.add('show-publish-status');
+        if (!postTitle.value) {
+            postTitle.classList.add('red-error-underline');
+            titleRequired.classList.remove('hidden');
+        }
+        if (!postSubtitle.value) {
+            postSubtitle.classList.add('red-error-underline');
+            subtitleRequired.classList.remove('hidden');
+        }
+        if (!authorName.value) {
+            authorName.classList.add('red-error-underline');
+            authorNameRequired.classList.remove('hidden');
+        }
+        if (!inputAuthorPhoto.value) {
+            authorPhotoRequired.classList.remove('hidden');
+        }
+        if (!date.value) {
+            date.classList.add('red-error-underline');
+            dateRequired.classList.remove('hidden');
+        }
+        if (!inputBigPhoto.value) {
+            bigPhotoRequired.classList.remove('hidden');
+        }
+        if (!inputSmallPhoto.value) {
+            smallPhotoRequired.classList.remove('hidden');
+        }
+        if (!contentText.value) {
+            contentText.classList.add('red-error-underline');
+            textRequired.classList.remove('hidden');
+        }
     } else {
-        console.log(JSON.stringify({
-            title: postTitle.value,
-            subtitle: postSubtitle.value,
-            author: authorName.value,
-            publishDate: date.value,
-            content: contentText.value,
-            authorImg: imgData.AuthorPhoto,
-            imgModifier: imgData.PostPhoto,
-            articlePhoto: imgData.ArticlePhoto,
-        }));
+        const response = await fetch('/api/post', {
+            method: 'POST',
+            body: JSON.stringify({
+                title: postTitle.value,
+                subtitle: postSubtitle.value,
+                author: authorName.value,
+                publishDate: date.value,
+                content: contentText.value,
+                authorImg: imgData.AuthorPhoto,
+                authorImgName: imgData.AuthorPhotoName,
+                imgModifier: imgData.PostPhoto,
+                imgModifierName: imgData.PostPhotoName,
+                articlePhoto: imgData.ArticlePhoto,
+            })
+        });
+
+        publishError.classList.remove('show-publish-status');
+        publishOk.classList.add('show-publish-status');
+        console.log(response.ok);
     }
-}
-
-const createNewPost = async function() {
-    const response = await fetch('/api/post', {
-        method: 'POST',
-        body: JSON.stringify({
-            title: postTitle.value,
-            subtitle: postSubtitle.value,
-            author: authorName.value,
-            publishDate: date.value,
-            content: contentText.value,
-            authorImg: imgData.AuthorPhoto,
-            authorImgName: imgData.AuthorPhotoName,
-            imgModifier: imgData.PostPhoto,
-            imgModifierName: imgData.PostPhotoName,
-            articlePhoto: imgData.ArticlePhoto,
-        })
-    });
-
-    console.log(response.ok);
 }
 
 publishButton.addEventListener('click', publishNewPost);

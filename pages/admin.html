@@ -28,75 +28,90 @@
         </div>
         <input class="admin-new-post__button" type="submit" id="publish" value="Publish">
       </div>
+      <div class="admin-page__publish-error" id="adminPublishError">
+        <img src="/static/img/alert-circle.png" alt="alert-circle">
+        <span class="login-window__error-message">Whoops! Some fields need your attention :o</span>
+      </div>
+      <div class="admin-page__publish-ok" id="adminPublishOk">
+        <img src="/static/img/check-circle.png" alt="check-circle">
+        <span class="login-window__error-message">Publish Complete!</span>
+      </div>
       <div class="admin-page__admin-main-information admin-main-information">
         <h2 class="admin-main-information__title">Main Information</h2>
         <div class="admin-main-information__main-block">
           <div class="admin-main-information__upload-part upload-part">
             <span class="upload-part__upload-titles">Title</span>
             <input class="upload-part__data-input" type="text" id="postTitle" placeholder="New Post">
+            <span class="login-window__empty-field-error hidden" id="titleRequired">Title is required.</span>
             <span class="upload-part__upload-titles">Short description</span>
             <input class="upload-part__data-input" type="text" id="postSubtitle" placeholder="Please, enter any description">
+            <span class="login-window__empty-field-error hidden" id="subtitleRequired">Subtitle is required.</span>
             <span class="upload-part__upload-titles">Author name</span>
             <input class="upload-part__author-name-input" type="text" id="authorName">
+            <span class="login-window__empty-field-error hidden" id="authorNameRequired">Author name is required.</span>
             <span class="upload-part__upload-titles">Author Photo</span>
             <div class="upload-part__author-photo">
               <div class="upload-part__profile-photo" id="profilePhoto"></div>
               <img class="upload-part__profile-photo-placeholder hidden" id="profilePhotoPlaceholder">
               <input class="upload-part__hidden-input" type="file" id="authorPhoto" accept=".jpg, .jpeg, .png, .gif">
-              <label class="upload-part__upload-photo" for="author-photo" id="uploadAuthorPhoto">Upload</label>
+              <label class="upload-part__upload-photo" for="authorPhoto" id="uploadAuthorPhoto">Upload</label>
               <div class="hidden" id="newRemoveAuthorPhoto">
-                <div class="upload-part__upload-new-photo" id="uploadAuthorPhoto">
+                <label class="upload-part__upload-new-photo" for="authorPhoto">
                   <img class="upload-part__icon" src="/static/img/camera.png" alt="Camera">
-                  <label class="upload-part__upload-photo" for="author-photo">Upload New</label>
-                </div>
+                  <span class="upload-part__upload-photo">Upload New</span>
+                </label>
                 <div class="upload-part__upload-new-photo" id="removeAuthorPhoto">
                   <img class="upload-part__icon" src="/static/img/trash-2.png" alt="Trash Bin">
                   <span class="upload-part__remove-photo">Remove</span>
                 </div>
               </div>
             </div>
+            <span class="login-window__empty-field-error hidden" id="authorPhotoRequired">Author photo is required.</span>
             <span class="upload-part__upload-titles">Publish Date</span>
             <input class="upload-part__data-input" type="date" id="date">
+            <span class="login-window__empty-field-error hidden" id="dateRequired">Publish date is required.</span>
             <span class="upload-part__upload-titles">Hero Image</span>
             <label class="upload-part__upload-photo_big flex hidden" id="uploadPhotoBig">
               <input class="upload-part__hidden-input" type="file" id="bigPhoto" accept=".jpg, .jpeg, .png, .gif">
               <img src="/static/img/camera.png" alt="Upload">
               <span class="upload-part__upload">Upload</span>
             </label>
-            <label for="big-photo">
+            <label for="bigPhoto">
               <img class="upload-part__upload-photo_big-placeholder hidden" id="uploadPhotoBigPlaceholder">
             </label>
             <div class="hidden" id="newRemoveBigPhoto">
-              <div class="upload-part__upload-new-photo">
+              <label class="upload-part__upload-new-photo" for="bigPhoto">
                 <img class="upload-part__icon" src="/static/img/camera.png" alt="Camera">
-                <label class="upload-part__upload-photo" for="big-photo" id="big-photo">Upload New</label>
-              </div>
-              <div class="upload-part__upload-new-photo">
+                <span class="upload-part__upload-photo">Upload New</span>
+              </label>
+              <div class="upload-part__upload-new-photo" id="removeBigPhoto">
                 <img class="upload-part__icon" src="/static/img/trash-2.png" alt="Trash Bin">
-                <span class="upload-part__remove-photo" id="removeBigPhoto">Remove</span>
+                <span class="upload-part__remove-photo">Remove</span>
               </div>
             </div>
             <span class="upload-part__hint" id="bigPhotoHint">Size up to 10mb. Format: png, jpeg, gif.</span>
+            <span class="login-window__empty-field-error hidden" id="bigPhotoRequired">Photo is required.</span>
             <span class="upload-part__upload-titles">Hero Image</span>
             <label class="upload-part__upload-photo_small flex hidden" id="uploadPhotoSmall">
               <input class="upload-part__hidden-input" type="file" id="smallPhoto" accept=".jpg, .jpeg, .png, .gif">
               <img src="/static/img/camera.png" alt="Upload">
               <span class="upload-part__upload">Upload</span>
             </label>
-            <label for="small-photo">
+            <label for="smallPhoto">
               <img class="upload-part__upload-photo_small-placeholder hidden" id="uploadPhotoSmallPlaceholder">
             </label>
             <div class="hidden" id="newRemoveSmallPhoto">
-              <div class="upload-part__upload-new-photo">
+              <label class="upload-part__upload-new-photo" for="smallPhoto">
                 <img class="upload-part__icon" src="/static/img/camera.png" alt="Camera">
-                <label class="upload-part__upload-photo" for="small-photo" id="small-photo">Upload New</label>
-              </div>
-              <div class="upload-part__upload-new-photo">
+                <span class="upload-part__upload-photo">Upload New</label>
+              </label>
+              <div class="upload-part__upload-new-photo" id="removeSmallPhoto">
                 <img class="upload-part__icon" src="/static/img/trash-2.png" alt="Trash Bin">
-                <span class="upload-part__remove-photo" id="removeSmallPhoto">Remove</span>
+                <span class="upload-part__remove-photo">Remove</span>
               </div>
             </div>
             <span class="upload-part__hint" id="smallPhotoHint">Size up to 5mb. Format: png, jpeg, gif.</span>
+            <span class="login-window__empty-field-error hidden" id="smallPhotoRequired">Photo is required.</span>
           </div>
           <div class="admin-main-information__preview-part preview-part">
             <span class="preview-part__preview-titles">Article preview</span>
@@ -147,6 +162,7 @@
         <h2 class="admin-content__title">Content</h2>
         <span class="upload-part__upload-titles">Post content (plain text)</span>
         <textarea class="admin-content__input" id="contentText" placeholder="Type anything you want ..."></textarea>
+        <span class="login-window__empty-field-error hidden" id="textRequired">Some text is required.</span>
       </div>
     </div>
   </body>
