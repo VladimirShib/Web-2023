@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>Escape</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/css/styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="menu__layout hidden" id="layout"></div>
     <div class="main-top-block">
       <header class="main-top-block__menu menu">
         <span class="menu__logotype_light">Escape.</span>
@@ -17,7 +19,18 @@
           <a title="ABOUT" href="#" class="menu__item_light">ABOUT</a>
           <a title="CONTACT" href="#" class="menu__item_light">CONTACT</a>
         </nav>
+        <div class="menu__burger-button" id="burger">
+          <div class="menu__burger-line"></div>
+          <div class="menu__burger-line"></div>
+          <div class="menu__burger-line"></div>
+        </div>
       </header>
+      <div class="menu__burger-menu" id="burgerMenu">
+        <a title="HOME" href="/home" class="menu__item_light">HOME</a>
+        <a title="CATEGORIES" href="#" class="menu__item_light">CATEGORIES</a>
+        <a title="ABOUT" href="#" class="menu__item_light">ABOUT</a>
+        <a title="CONTACT" href="#" class="menu__item_light">CONTACT</a>
+      </div>
       <div class="main-top-block__heading heading">
         <h1 class="heading__title">Let's do it together.</h1>
         <p class="heading__subtitle">We travel the world in search of stories. Come along for the ride.</p>
@@ -64,11 +77,13 @@
       </div>
     </div>
     <div class="bottom-block">
-      <h2 class="bottom-block__divider_light">Stay in Touch</h2>
-      <form class="bottom-block__form form" action="#">
-        <input class="form__input" type="text" placeholder="Enter your email address" name="name">
-        <input class="form__button" type="submit" value="Submit">
-      </form>
+      <div class="bottom-block__content">
+        <h2 class="bottom-block__divider_light">Stay in Touch</h2>
+        <form class="bottom-block__form form" action="#">
+          <input class="form__input" type="text" placeholder="Enter your email address" name="name">
+          <input class="form__button" type="submit" value="Submit">
+        </form>
+      </div>
       <footer class="bottom-block__footer">
         <div class="bottom-block__menu menu">
           <span class="menu__logotype_light">Escape.</span>
@@ -82,4 +97,5 @@
       </footer>
     </div>
   </body>
+  <script src="/static/js/index.js"></script>
 </html>
